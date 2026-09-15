@@ -13,6 +13,7 @@ Shell setup shared by my Mac and every VS Code devcontainer: zsh + oh-my-zsh + p
 | `zsh/zprofile` | `~/.zprofile` | Homebrew + `~/.local/bin` for login shells |
 | `bash/` | `~/.bashrc`, `~/.bash_profile` (macOS) | minimal bash fallback |
 | `p10k.zsh` | `~/.p10k.zsh` | powerlevel10k layout |
+| `ccstatusline/` | `~/.config/ccstatusline` | Claude Code status line layout and badge scripts (the account badge reads the logged-in email) |
 
 Secrets and per-machine tweaks go in `~/.zshrc.local` / `~/.bashrc.local`. They are sourced last and never committed.
 

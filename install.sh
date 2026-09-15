@@ -56,6 +56,10 @@ fi
 link zsh/zshrc "$HOME/.zshrc"
 link p10k.zsh "$HOME/.p10k.zsh"
 
+# --- Claude Code status line ---------------------------------------------------
+mkdir -p "$HOME/.config"
+link ccstatusline "$HOME/.config/ccstatusline"
+
 # --- macOS ---------------------------------------------------------------------
 if [[ "$OS" == Darwin ]]; then
   link zsh/zprofile "$HOME/.zprofile"
@@ -72,6 +76,16 @@ if [[ "$OS" == Linux ]]; then
   if [[ ! -x "$HOME/.local/bin/claude" ]]; then
     log "installing Claude Code"
     curl -fsSL https://claude.ai/install.sh | bash
+  fi
+
+  # Node (nvm) + ccstatusline. nvm isn't `set -u`-safe, so it runs in its own bash.
+  if [[ ! -s "$HOME/.nvm/nvm.sh" ]]; then
+    log "installing nvm"
+    PROFILE=/dev/null bash -c "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh)" >/dev/null
+  fi
+  if ! bash -c 'source "$HOME/.nvm/nvm.sh" && command -v ccstatusline' >/dev/null 2>&1; then
+    log "installing Node 24 + ccstatusline"
+    bash -c 'source "$HOME/.nvm/nvm.sh" && nvm install 24 >/dev/null && nvm alias default 24 >/dev/null && npm install -g ccstatusline >/dev/null'
   fi
 
   if [[ ! -x "$HOME/.local/bin/rtk" ]]; then
