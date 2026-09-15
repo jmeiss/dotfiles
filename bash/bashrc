@@ -1,0 +1,10 @@
+# zsh is the main shell; this keeps bash usable on macOS.
+export PATH="$PATH:$HOME/.local/bin"
+
+# Ruby (RVM)
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  export PATH="$PATH:$HOME/.rvm/bin"
+  source "$HOME/.rvm/scripts/rvm"
+fi
+
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

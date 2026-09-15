@@ -1,0 +1,3 @@
+# Login bash: Homebrew, then the interactive config.
+[[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -f ~/.bashrc ]] && source ~/.bashrc
