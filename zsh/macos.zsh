@@ -23,7 +23,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Claude Code config profiles
 alias cce='CLAUDE_CONFIG_DIR=$HOME/.claude-ergana claude'
-alias ccp='CLAUDE_CONFIG_DIR=$HOME/.claude claude'
+alias ccp='env -u CLAUDE_CONFIG_DIR claude'  # default profile: ~/.claude + ~/.claude.json
 
 # Claude folder that devcontainers mount as their ~/.claude (read by Ergana's devcontainer.json).
 export DEVCONTAINER_CLAUDE_DIRNAME=.claude-ergana
